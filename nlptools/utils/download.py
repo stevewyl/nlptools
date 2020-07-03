@@ -1,0 +1,1 @@
+tencent_embedding_link = "https://ai.tencent.com/ailab/nlp/en/data/Tencent_AILab_ChineseEmbedding.tar.gz"

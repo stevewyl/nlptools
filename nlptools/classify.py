@@ -44,7 +44,7 @@ class WordFreqLR(Classifier):
     def __init__(self):
         super(WordFreqLR, self).__init__()
         self.model = None
-    
+
     def build_freq(self, X, Y):
         """Build frequencies.
         Input:
@@ -66,7 +66,6 @@ class WordFreqLR(Classifier):
         return freqs
 
     def train(self, corpus):
-        
 
 class NavieBayes(Classifier):
     def __init__(self):
@@ -74,4 +73,12 @@ class NavieBayes(Classifier):
 
     def classify(self, corpus):
 
+class SBERTClassifier(Classifier):
+    def __init__(self):
+        super(SBERTClassifier, self).__init__()
+
+    def
+
 class BERTClassifier(Classifier):
+
+
