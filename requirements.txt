@@ -1,0 +1,5 @@
+jieba
+scipy
+scikit-learn
+sentence_transformers
+tqdm
