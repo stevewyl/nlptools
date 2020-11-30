@@ -1,5 +1,8 @@
 jieba
+pyahocorasick
 scipy
 scikit-learn
 sentence_transformers
+symspellpy
 tqdm
+ujson

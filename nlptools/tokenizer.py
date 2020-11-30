@@ -1,3 +1,4 @@
+import re
 from pathlib import Path
 
 import ahocorasick
@@ -19,7 +20,7 @@ class Tokenizer:
 class BERTTokenizer(Tokenizer):
     def __init__(self):
         super(BERTTokenizer, self).__init__()
-        self.tokenizer = BertWordPieceTokenizer("data/vocab/bert.txt", lowercase=True)
+        self.tokenizer = BertWordPieceTokenizer(DATA_DIR / "vocab" / "bert.txt", lowercase=True)
 
     def tokenize(self, text):
         seg_result = self.tokenizer.encode(text).tokens
@@ -49,6 +50,9 @@ class JiebaTokenizer(Tokenizer):
 class CharTokenizer(Tokenizer):
     def __init__(self):
         super(CharTokenizer, self).__init__()
+        self.cn_pattern = re.compile(r"[\u4e00-\u9fa5]+")
+        self.en_pattern = re.compile(r"[a-zA-Z]+")
+        self.num_pattern = re.compile(r"[0-9]+")
 
     def basic_tokenize(self, text):
         return list(text)
@@ -95,11 +99,11 @@ class CharTokenizer(Tokenizer):
 
 class PinyinTokenizer(Tokenizer):
     def __init__(self, pinyin_freqs=Path(DATA_DIR) / "pinyin_freqs.txt"):
-        super(PinyinTokenizer, self).__init__()
         """
         Implement from: https://spaces.ac.cn/archives/3908
         内置的是中文人名中的拼音频数，可以根据自己需求更改频数文件
         """
+        super(PinyinTokenizer, self).__init__()
         self.pinyin_ac = self.build(pinyin_freqs)
         self.break_ac = ahocorasick.Automaton()
         for c in ['，', '。', '！', '、', '？', ' ', '\n']:

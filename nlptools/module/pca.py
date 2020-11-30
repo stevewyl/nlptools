@@ -15,6 +15,6 @@ def compute_pca(X, n_commpents=2):
     idx_sorted_decreasing = np.argsort(eigen_vals)[::-1]
     eigen_vals_sorted = eigen_vals[idx_sorted_decreasing]
     eigen_vecs_sorted = eigen_vecs[:,idx_sorted_decreasing]
-    eigen_vecs_subset = eigen_vecs_sorted[:, :n_components]
+    eigen_vecs_subset = eigen_vecs_sorted[:, :n_commpents]
     X_reduced = np.dot(eigen_vecs_subset.T, X_demeaned.T).T
     return X_reduced

@@ -1,4 +1,4 @@
-import json
+import ujson
 
 def divide_chunks(l, n):
     return [l[i:i + n] for i in range(0, len(l), n)]
@@ -13,4 +13,4 @@ def read_list(fname, remove_dup=False):
     return list_obj
 
 def read_json(fname):
-    return json.load(open(fname, "r", encoding="utf8"))
+    return ujson.load(open(fname, "r", encoding="utf8"))
